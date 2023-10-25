@@ -2,14 +2,14 @@ package dev.ivanronco.inicioenrecyclerview_ivaroncocebadera
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
+import dev.ivanronco.inicioenrecyclerview_ivaroncocebadera.adapter.PersonOnClickListener
 import dev.ivanronco.inicioenrecyclerview_ivaroncocebadera.adapter.PersonaListAdapter
 import dev.ivanronco.inicioenrecyclerview_ivaroncocebadera.databinding.ActivityMainBinding
 import dev.ivanronco.inicioenrecyclerview_ivaroncocebadera.models.Persona
-import java.time.Period
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), PersonOnClickListener {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
-        personasAdapter = PersonaListAdapter(listaPersonas)
+        personasAdapter = PersonaListAdapter(listaPersonas, this@MainActivity)
 
         mLayoutManager = GridLayoutManager(this, 2)
 
@@ -44,5 +44,10 @@ class MainActivity : AppCompatActivity() {
             adapter = personasAdapter
             layoutManager = mLayoutManager
         }
+    }
+
+    override fun onClickPerson(persona: Persona): Persona{
+        Toast.makeText(this, "Hola!. Has pulsado sobre: ${persona.nombre}", Toast.LENGTH_SHORT).show()
+        return persona
     }
 }

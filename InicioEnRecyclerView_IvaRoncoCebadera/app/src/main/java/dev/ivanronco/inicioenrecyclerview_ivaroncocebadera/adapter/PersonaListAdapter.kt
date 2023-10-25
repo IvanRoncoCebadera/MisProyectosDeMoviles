@@ -10,7 +10,8 @@ import dev.ivanronco.inicioenrecyclerview_ivaroncocebadera.databinding.ItemPerso
 import dev.ivanronco.inicioenrecyclerview_ivaroncocebadera.models.Persona
 
 class PersonaListAdapter(
-    private val lista: List<Persona>
+    private val lista: List<Persona>,
+    private val listener: PersonOnClickListener
 ): RecyclerView.Adapter<PersonaListAdapter.PersonasViewHolder>() {
 
     inner class PersonasViewHolder(view: View): RecyclerView.ViewHolder(view) {
@@ -22,6 +23,10 @@ class PersonaListAdapter(
             Glide.with(binding.imagenPersona)
                 .load(persona.imagen).centerCrop()//La centramos!!!
                 .into(binding.imagenPersona)
+        }
+
+        fun setListener(persona: Persona){
+            binding.root.setOnClickListener { listener.onClickPerson(persona) }
         }
     }
 
@@ -35,6 +40,7 @@ class PersonaListAdapter(
 
         with(holder){ // holder as ...
             bind(currentPersona)
+            setListener(currentPersona)
         }
 
         //Si, como en este caso, solo tengo que hacer una cos, mejor esto:
