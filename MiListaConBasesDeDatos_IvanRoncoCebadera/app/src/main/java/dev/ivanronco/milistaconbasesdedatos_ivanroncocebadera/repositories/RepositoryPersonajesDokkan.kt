@@ -3,7 +3,7 @@ package dev.ivanronco.milistaconbasesdedatos_ivanroncocebadera.repositories
 import dev.ivanronco.milistaconbasesdedatos_ivanroncocebadera.models.DokkanCaracter
 
 class RepositoryPersonajesDokkan(
-    //private val database: IDatabasePersonajesDokkan<DokkanCaracter, Long>
+    //private val database: DokkanCaracterDao,
     private val listaPersonajes: MutableList<DokkanCaracter>
 ): IPersonajesDokkanRepository<DokkanCaracter, Long> {
 

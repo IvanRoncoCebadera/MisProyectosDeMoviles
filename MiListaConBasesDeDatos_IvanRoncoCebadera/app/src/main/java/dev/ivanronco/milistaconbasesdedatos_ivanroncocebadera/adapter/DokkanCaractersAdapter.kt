@@ -1,9 +1,11 @@
 package dev.ivanronco.milistaconbasesdedatos_ivanroncocebadera.adapter
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
@@ -14,9 +16,36 @@ import dev.ivanronco.milistaconbasesdedatos_ivanroncocebadera.databinding.Dokkan
 import dev.ivanronco.milistaconbasesdedatos_ivanroncocebadera.models.DokkanCaracter
 
 class DokkanCaractersAdapter(
-    var listaPersonajes: List<DokkanCaracter>,
+    var listaPersonajes: MutableList<DokkanCaracter>,
     private val listener: OnCaracterClickListener
 ): RecyclerView.Adapter<DokkanCaractersAdapter.DokkanCaractersViewHolder>() {
+
+    fun setList(listaPersonajes: MutableList<DokkanCaracter>){
+        this.listaPersonajes = listaPersonajes
+        notifyDataSetChanged()
+    }
+
+    fun addPersonaje(personaje: DokkanCaracter){
+        listaPersonajes.add(personaje)
+        notifyItemChanged(itemCount-1)
+    }
+
+    fun updatePersonaje(personaje: DokkanCaracter){
+        var indice = 0
+        for (i in listaPersonajes.indices){
+            if(listaPersonajes[i].id == personaje.id){
+                indice = i
+                listaPersonajes[i] = personaje
+                break
+            }
+        }
+        notifyItemChanged(indice)
+    }
+
+    fun deletePersonaje(id: Long){
+        listaPersonajes.removeAll { pj -> pj.id.equals(id) }
+        notifyDataSetChanged()
+    }
 
     inner class DokkanCaractersViewHolder(view: View): RecyclerView.ViewHolder(view){
         val binding: DokkanCaracterViewBinding = DokkanCaracterViewBinding.bind(view)
@@ -25,7 +54,9 @@ class DokkanCaractersAdapter(
         fun bind(personaje: DokkanCaracter){
             if(personaje.esFavorito){
                 binding.iconoPersonajeFavorito.setImageResource(R.drawable.estrella_rellena)
-            } //No hay else, porque por defecto, ya esta la estrella vacía!!
+            }else{
+                binding.iconoPersonajeFavorito.setImageResource(R.drawable.estrella_vacia)
+            }
 
             binding.textoNombrePersonaje.setText(personaje.nombre)
 
@@ -40,30 +71,53 @@ class DokkanCaractersAdapter(
 
         private fun setUpListeners(personaje: DokkanCaracter) {
             binding.iconoPersonajeFavorito.setOnClickListener {
+                Log.i("Estrella", personaje.toString())
                 if(personaje.esFavorito){
                     binding.iconoPersonajeFavorito.setImageResource(R.drawable.estrella_vacia)
                     personaje.esFavorito = false
+                    listener.update(personaje)
                 }else{
                     binding.iconoPersonajeFavorito.setImageResource(R.drawable.estrella_rellena)
                     personaje.esFavorito = true
+                    listener.update(personaje)
                 }
+                Log.i("Estrella", personaje.toString())
+                Log.i("Estrella", "")
             }
 
-            binding.iconoBorrarPersonaje.setOnClickListener {
-                AlertDialog.Builder(binding.root.context).apply {
-                    setTitle("¿Seguro que quieres eliminar este registro?")
-                    setPositiveButton("Aceptar"){ _ ,_ ->
-                        listaPersonajes = listener.deletePersonaje(personaje.id)
-                        notifyDataSetChanged()
-                    }
-                    setNegativeButton("Cancelar"){ _, _ ->
-                        Toast.makeText(binding.root.context, "Se ha cancelado la operación!!", Toast.LENGTH_SHORT).show()
-                    }
-                }.create().show()
-            }
+            binding.botonMenuDesplegable.setOnClickListener { view ->
+                val popupMenu = PopupMenu(binding.root.context, view)
+                popupMenu.menuInflater.inflate(R.menu.menu_caracter, popupMenu.menu)
 
-            binding.zonaInteractuableParaEditar.setOnClickListener {
-                listener.updatePersonaje(personaje)
+                popupMenu.setOnMenuItemClickListener { item ->
+                    when (item.itemId) {
+                        R.id.itemActualizador -> {
+                            listener.updatePersonaje(personaje)
+                            true
+                        }
+
+                        R.id.itemBorrador -> {
+                            AlertDialog.Builder(binding.root.context).apply {
+                                setTitle("¿Seguro que quieres eliminar este registro?")
+                                setPositiveButton("Aceptar") { _, _ ->
+                                    listener.deletePersonaje(personaje)
+                                }
+                                setNegativeButton("Cancelar") { _, _ ->
+                                    Toast.makeText(
+                                        binding.root.context,
+                                        "Se ha cancelado la operación!!",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                            }.create().show()
+                            true
+                        }
+
+                        else -> false
+                    }
+                }
+
+                popupMenu.show()
             }
         }
     }

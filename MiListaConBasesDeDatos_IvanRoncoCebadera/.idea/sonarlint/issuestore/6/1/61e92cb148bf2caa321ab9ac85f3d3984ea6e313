@@ -1,3 +1,13 @@
 
-„kotlin:S100?"aRename function "deshabilitarBotonAÃ±adir" to match the regular expression ^[a-zA-Z][a-zA-Z0-9]*$(ŠÒæªüÿÿÿÿ8Í˜ó›¶1
-ƒkotlin:S100C"`Rename function "rehabilitarBotonAÃ±adir" to match the regular expression ^[a-zA-Z][a-zA-Z0-9]*$(›•ƒùÿÿÿÿ8Äìñ›¶1
+9kotlin:S1128"Remove this unused import.(Á‘ğı8ä¦Ÿ‘·1
+>kotlin:S1128	"Remove this unused import.(ÙÃä¡şÿÿÿÿ8ä¦Ÿ‘·1
+ˆkotlin:S100Q"jRename function "deshabilitarBotonAÃ±adirYRecycler" to match the regular expression ^[a-zA-Z][a-zA-Z0-9]*$(øŸê8ä¦Ÿ‘·1
+‡kotlin:S100V"iRename function "rehabilitarBotonAÃ±adirYRecycler" to match the regular expression ^[a-zA-Z][a-zA-Z0-9]*$(»®‡8ä¦Ÿ‘·1
+<kotlin:S125g"Remove this commented out code.(Çµ'8ä¦Ÿ‘·1
+=kotlin:S125t"Remove this commented out code.(ö½ä¬8ä¦Ÿ‘·1
+Ckotlin:S125"Remove this commented out code.(à‘ºÿÿÿÿÿ8ä¦Ÿ‘·1
+Ckotlin:S125"Remove this commented out code.(Ëµûëüÿÿÿÿ8ä¦Ÿ‘·1
+;kotlin:S6310I"Avoid hardcoded dispatchers.(ÊüÀæ8ä¦Ÿ‘·1
+;kotlin:S6310k"Avoid hardcoded dispatchers.(ÊüÀæ8ä¦Ÿ‘·1
+;kotlin:S6310y"Avoid hardcoded dispatchers.(ÊüÀæ8ä¦Ÿ‘·1
+<kotlin:S6310•"Avoid hardcoded dispatchers.(ÊüÀæ8© ‘·1

@@ -1,24 +1,14 @@
 package dev.ivanronco.milistaconbasesdedatos_ivanroncocebadera.service.database
 
+import androidx.room.Database
+import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import dev.ivanronco.milistaconbasesdedatos_ivanroncocebadera.config.ConfigApp
 import dev.ivanronco.milistaconbasesdedatos_ivanroncocebadera.models.DokkanCaracter
+import dev.ivanronco.milistaconbasesdedatos_ivanroncocebadera.models.TipoPersonajeConverter
 
-class DatabasePersonajesDokkan(
-    private val config: ConfigApp
-): IDatabasePersonajesDokkan<DokkanCaracter, Long> {
-    override fun getAll(): List<DokkanCaracter> {
-        TODO("Not yet implemented")
-    }
-
-    override fun deleteById(id: Long): Boolean {
-        TODO("Not yet implemented")
-    }
-
-    override fun updatePersonaje(personaje: DokkanCaracter): DokkanCaracter {
-        TODO("Not yet implemented")
-    }
-
-    override fun addPersonaje(personaje: DokkanCaracter): DokkanCaracter {
-        TODO("Not yet implemented")
-    }
+@Database(entities = [DokkanCaracter::class], version = 1)
+@TypeConverters(TipoPersonajeConverter::class)
+abstract class DatabasePersonajesDokkan: RoomDatabase() {
+    abstract fun dokkanCaracterDao(): DokkanCaracterDao
 }

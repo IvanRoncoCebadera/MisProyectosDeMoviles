@@ -1,8 +1,7 @@
 
->kotlin:S1128"Remove this unused import.(ÊÒÅ­ùÿÿÿÿ8ê«ë›¶1
-Gkotlin:S1874>"#Deprecated code should not be used.(ûÍá¸úÿÿÿÿ8ğ«ë›¶1
-Bkotlin:S1874t"#Deprecated code should not be used.(ğÆÊ8ò«ë›¶1
-Ckotlin:S1874•"#Deprecated code should not be used.(‚´Ã¬8èäõ›¶1
-Ckotlin:S1874Ä"#Deprecated code should not be used.(Õ‡Ğõ8èäõ›¶1
-wkotlin:S3776"RRefactor this method to reduce its Cognitive Complexity from 23 to the 15 allowed.(Ç¥Ëéşÿÿÿÿ8êäõ›¶1
-Nkotlin:S1066–".Merge this "if" statement with the nested one.(…Èà8ìäõ›¶1
+Gkotlin:S1874="#Deprecated code should not be used.(ûÍá¸úÿÿÿÿ8Äº°Û¶1
+Bkotlin:S1874s"#Deprecated code should not be used.(ğÆÊ8Äº°Û¶1
+Ckotlin:S1874”"#Deprecated code should not be used.(‚´Ã¬8Äº°Û¶1
+Ckotlin:S1874Ã"#Deprecated code should not be used.(Õ‡Ğõ8Äº°Û¶1
+wkotlin:S3776"RRefactor this method to reduce its Cognitive Complexity from 23 to the 15 allowed.(Ç¥Ëéşÿÿÿÿ8Åº°Û¶1
+Nkotlin:S1066•".Merge this "if" statement with the nested one.(…Èà8Èº°Û¶1

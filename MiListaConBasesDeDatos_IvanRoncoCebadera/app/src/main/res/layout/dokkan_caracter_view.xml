@@ -2,8 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                                    xmlns:app="http://schemas.android.com/apk/res-auto"
                                                    xmlns:tools="http://schemas.android.com/tools"
-                                                   android:layout_width="wrap_content"
-                                                   android:layout_height="wrap_content">
+                                                   android:layout_height="wrap_content" android:layout_width="wrap_content">
 
     <androidx.cardview.widget.CardView android:layout_width="wrap_content" android:layout_height="wrap_content"
                                        android:id="@+id/cartaPersonaje"
@@ -25,23 +24,21 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp" app:srcCompat="@drawable/estrella_vacia"
                 android:id="@+id/iconoPersonajeFavorito"
-                android:layout_marginStart="300dp"
-                android:layout_marginTop="22dp"/>
+                android:layout_marginStart="290dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginEnd="25dp"/>
         <ImageView
                 android:layout_width="200dp"
                 android:layout_height="200dp" tools:srcCompat="@tools:sample/avatars" android:id="@+id/imagenPersonaje"
                 android:layout_marginStart="50dp"
                 android:layout_marginTop="80dp"
                 android:layout_marginBottom="22dp"/>
-        <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp" app:srcCompat="@drawable/cubo_basura"
-                android:id="@+id/iconoBorrarPersonaje"
-                android:layout_marginStart="300dp"
-                android:layout_marginTop="150dp"
-                android:layout_marginEnd="24dp"/>
-        <TextView
-                android:layout_width="300dp"
-                android:layout_height="310dp" android:id="@+id/zonaInteractuableParaEditar"/>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true" app:srcCompat="@drawable/menu" android:id="@+id/botonMenuDesplegable"
+                app:backgroundTint="@color/white"
+                android:layout_marginStart="275dp"
+                android:layout_marginTop="150dp"/>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

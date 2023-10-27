@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -137,7 +136,7 @@ class AddOrUpdateFragment : Fragment() {
                     mainActivity.update(personaje)
                 }
             }else{
-                mainActivity.deshabilitarBotonAñadir()
+                mainActivity.deshabilitarBotonAñadirYRecycler()
                 Toast.makeText(binding.root.context, "Se ha cancela la operación!!", Toast.LENGTH_SHORT).show()
             }
 
@@ -200,7 +199,7 @@ class AddOrUpdateFragment : Fragment() {
 
     private fun volverALaLista() {
         val mainActivity = requireActivity() as MainActivity
-        mainActivity.rehabilitarBotonAñadir()
+        mainActivity.rehabilitarBotonAñadirYRecycler()
         val fragmentManager = requireActivity().supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.remove(this) // Elimina el fragmento actual
